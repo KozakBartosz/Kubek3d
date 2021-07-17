@@ -33,11 +33,10 @@ function App() {
         <div className="App">
             <button
                 onClick={() => {
-                    if (startDate === initialLayers) {
-                        setStartDate(initialLayers2);
-                    } else {
-                        setStartDate(initialLayers);
-                    }
+                    startDate === initialLayers
+                    ? setStartDate(initialLayers2)
+                    : setStartDate(initialLayers)
+                    
                 }}
             >
                 ZMIEN
@@ -47,7 +46,6 @@ function App() {
                 bgUrl="./assets/textures/UV_Grid_Sm.alpha.png"
                 modelUrl="assets/kubek4.obj"
             />
-            <input value={startDate} />
         </div>
     );
 }
