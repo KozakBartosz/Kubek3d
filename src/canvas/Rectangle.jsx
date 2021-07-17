@@ -1,24 +1,24 @@
-import { Rect, Transformer, Image } from 'react-konva';
-import { useRef, useEffect } from 'react';
+import { Rect, Transformer, Image } from 'react-konva'
+import { useRef, useEffect } from 'react'
 
-import useImage from 'use-image';
-import { Portal } from 'react-konva-utils';
+import useImage from 'use-image'
+import { Portal } from 'react-konva-utils'
 
 export const Rectangle = ({ layer, isSelected, onSelect, onChange }) => {
-    const imgRef = useRef();
-    const rectRef = useRef();
-    const trRef = useRef();
-    console.log(layer);
+    const imgRef = useRef()
+    const rectRef = useRef()
+    const trRef = useRef()
+    console.log(layer)
 
     useEffect(() => {
         if (isSelected) {
             // we need to attach transformer manually
-            trRef.current.nodes([imgRef.current, rectRef.current]);
-            trRef.current.getLayer().batchDraw();
+            trRef.current.nodes([imgRef.current, rectRef.current])
+            trRef.current.getLayer().batchDraw()
         }
-    }, [isSelected]);
+    }, [isSelected])
 
-    const [image] = useImage(layer.url);
+    const [image] = useImage(layer.url, 'anonymous')
 
     return (
         <>
@@ -35,15 +35,15 @@ export const Rectangle = ({ layer, isSelected, onSelect, onChange }) => {
                     onChange({
                         ...layer,
                         x: e.target.x(),
-                        y: e.target.y()
-                    });
+                        y: e.target.y(),
+                    })
                 }}
                 onTransformEnd={(e) => {
                     onChange({
                         ...layer,
                         x: e.target.x(),
-                        y: e.target.y()
-                    });
+                        y: e.target.y(),
+                    })
                 }}
 
                 // onTransformEnd={(e) => {
@@ -89,16 +89,16 @@ export const Rectangle = ({ layer, isSelected, onSelect, onChange }) => {
                         boundBoxFunc={(oldBox, newBox) => {
                             // limit resize
                             if (newBox.width < 10 || newBox.height < 10) {
-                                return oldBox;
+                                return oldBox
                             }
-                            return newBox;
+                            return newBox
                         }}
                     />
                 </Portal>
             )}
         </>
-    );
-};
+    )
+}
 
 // function getCrop(image, size, clipPosition = 'center-middle') {
 //     const width = size.width;
