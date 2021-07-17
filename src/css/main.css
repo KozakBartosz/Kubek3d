@@ -1,0 +1,107 @@
+@import url('https://kozakbartosz.github.io/Draft/draft.min.css');
+
+/* body {
+	background: #000;
+} */
+
+.light {
+	--brand: #41adff;
+	--mainbg: #ffffff;
+	/* --mainpaddng: 13px; */
+	/* --radius: 24px; */
+
+	--low: #f0f1f3;
+	--like: #cfe2f7;
+	--midi: #b2cee7;
+	--hight: #1db5e4;
+
+	--text: #3f4646;
+	--textContrast: #1a1f1f;
+
+	--code: #20595f;
+
+	--button: #3dcca1;
+	--buttontext: #fff;
+
+	--fillhover: #e8f5ff;
+}
+.dg.ac {
+	padding: 0;
+}
+
+.canvasContainer {
+	width: 100%;
+	/* Proporcion of element by padding-top trick */
+	/* padding-top: 70%; */
+	height: calc(100vh - 100px);
+	/* height: 600px; */
+	position: relative;
+}
+@media only screen and (min-width: 950px) {
+	.canvasContainer {
+		height: 100vh;
+	}
+}
+
+.canvasContainer:focus {
+	box-shadow: none;
+	outline: none;
+}
+
+.canvasContainer canvas {
+	position: absolute;
+	top: 0;
+	left: 0;
+	right: 0;
+	bottom: 0;
+	z-index: -1;
+}
+
+@keyframes spin {
+	0% {
+		transform: rotate(0deg);
+	}
+	100% {
+		transform: rotate(360deg);
+	}
+}
+
+.canvasContainer-loading {
+	position: absolute;
+	top: 0;
+	left: 0;
+	right: 0;
+	bottom: 0;
+	margin: auto;
+	width: 10rem;
+	height: 10rem;
+	text-align: center;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	border-radius: 100%;
+	box-shadow: 0 0 4px rgba(0, 0, 0, 0.2) inset;
+	color: rgba(30, 30, 30, 0.6);
+	opacity: 0;
+	visibility: hidden;
+	background: rgba(255, 255, 255, 0.2);
+	transition: opacity 0.25s ease, visibility 0.25s ease;
+}
+
+.canvasContainer-loading::after {
+	animation: spin 0.3s cubic-bezier(0.61, 0.28, 0.37, 0.82) infinite;
+	border-radius: 100%;
+	content: '';
+	border: 3px solid transparent;
+	border-top-color: var(--hight);
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+}
+.canvasContainer-loading--active {
+	opacity: 1;
+	visibility: visible;
+	transition: none;
+}
